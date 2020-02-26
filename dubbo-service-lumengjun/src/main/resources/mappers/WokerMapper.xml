@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lumengjun.woker.mapper.WokerMapper">
+
+	
+	 <select id="getList" resultType="com.lumengjun.woker.pojo.Article">
+	 SELECT * FROM cms_article WHERE 1=1
+	 
+	 <if test="dt1!=''">
+	 AND created > #{dt1}
+	 </if>
+	 
+	 <if test="dt2!=''">
+	 AND created &lt; #{dt2}
+	 </if>
+	 
+	 <if test="dtj!=''">
+	  ORDER BY #{dtj} DESC
+	 </if>
+	 
+	 LIMIT 10
+	 </select>
+</mapper>
